@@ -1,0 +1,23 @@
+
+1）Path:内部封装了可以绘制直线段，二元曲线，三元曲线的能力，
+然后通过canvas.draw(path,paint)方法放到画布上，根据paint的风格
+也可以绘制填充或者描边的图。也可以裁剪和画一个文本路径
+
+2）Paint:根据他的风格和颜色，来绘制一个几何图形，文本或者图片
+
+3）Canvas:画布，绘制一些东西，你需要4个基本组件，一个带像素的Bitmap对象。
+第二个为可以绘制东西的Canvas（绘制到Bitmap上），第三个是要绘制的东西（
+Rect,Path, text, Bitmap），第四个是带颜色的Paint
+
+canvas可以绘制的东西如下：
+1）填充画布颜色
+ drawColor()
+2）几何图形
+ drawArc(扇形) ，drawCircle(圆形)，drawOval(椭圆)，drawLine(线)
+ drawPoint(点)，drawRect(矩形)，drawRoundRect(圆角矩形)，
+ drawPath(路径)
+3）图片
+ drawBitmap()
+4) 文本
+ drawText()
+

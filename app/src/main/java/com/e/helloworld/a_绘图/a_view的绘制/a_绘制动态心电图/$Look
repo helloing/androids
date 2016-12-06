@@ -1,0 +1,33 @@
+
+
+1) View内部有invalidate 和 postInvalidate 两个方法？
+ invalidete()       只能在UI线程中使用,配合Handler使用
+ postInvalidate()   非UI线程可以通过该方法刷新视图, view必须添加在window上
+
+2) View ：通过刷新来绘制视图，刷新的时间间隔为16ms 。频繁刷新，超过16ms
+  会导致卡顿。
+3) SurfaceView ：是View的子类。拥有独立的绘制表面，不与宿主共享一个绘图表面。
+可以单独在一个线程中绘制，不占用主线程资源。
+
+4）View和SurfaceView的区别？
+   View主要用于主动更新，surfaceView适用于被动频繁更新，内层双缓冲。
+
+
+ 使用布局
+ <?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:id="@+id/activity_main"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+     <com.e.helloworld.a_绘图.a_view的绘制.a_绘制动态心电图.EcgViewBackground
+         android:layout_width="match_parent"
+         android:layout_height="match_parent" />
+
+     <com.e.helloworld.a_绘图.a_view的绘制.a_绘制动态心电图.EcgView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+     </com.e.helloworld.a_绘图.a_view的绘制.a_绘制动态心电图.EcgView>
+
+ </RelativeLayout>

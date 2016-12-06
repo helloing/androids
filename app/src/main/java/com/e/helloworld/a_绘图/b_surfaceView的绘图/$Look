@@ -1,0 +1,13 @@
+
+SurfaceView组件：
+
+1）初始化时，调用getHolder()方法获取SurfaceHolder对象，然后用addCallback(this),
+添加对组件变化的监听。
+2）类中需要创建一个线程，专门用于绘制操作。要向这个线程类传递上面获得的SurfaceHolder对象。
+3）绘制：在线程中绘制操作，通过lockCanvas()方法获取Canvas对象。绘制完成后调用
+unlockCanvasAndPost(canvas)方法，进行绘图工作。
+
+注：
+lockCanvas()获取到的Canvas对象还是上次的Canvas对象，并不是一个新的对象。
+之前的绘图都将被保留，如果需要擦除，可以在绘制之前通过drawColor()方法来
+进行清屏。
