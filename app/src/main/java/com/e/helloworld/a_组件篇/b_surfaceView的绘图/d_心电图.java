@@ -1,4 +1,4 @@
-package com.e.helloworld.a_绘图.b_surfaceView的绘图;
+package com.e.helloworld.a_组件篇.b_surfaceView的绘图;
 
 import android.content.Context;
 import android.graphics.Paint;

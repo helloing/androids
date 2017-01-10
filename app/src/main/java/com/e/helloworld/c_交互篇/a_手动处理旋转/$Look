@@ -1,0 +1,33 @@
+
+用户交互篇：
+  不可以旋转 : android:screenOrientation
+  可以旋转重建实例 : 默认
+  可以旋转不重建实例 : android:configChanges
+
+1）手动处理旋转 (可以旋转但是不创建)
+  在旋转过程中，默认会将Activity销毁，然后再次重建Actiivy实例。
+这会影响app性能，同时数据也会丢失。
+ 解决方法：
+   清单文件添加 android:configChanges 参数。这样系统就不会干预该
+ actiivty的旋转事件了。也就不用销毁和重建该界面的Activity实例了。
+ 同时我们也可以获得onConfigurationChanged()方法回调。
+*****************************************************************
+ 生命周期（系统默认时）：
+  当开启一个Activitiy时，首先
+     onCreate() - onStart() - onResume()
+  然后进行旋转(横竖都是一遍，没发现走两遍啊？)
+     - onPause()
+     - onSaveInstanceState()
+     - onStop()
+     - onDestory()
+     - 新的实例 onCreate()
+     - onStart()
+     - onRestoreInstanceState()
+     - onResume()
+
+ 生命周期（android:configChanges="orientation|keyboardHidden|screenSize"）：
+     只是走了onConfigurationChanged()回调
+     onSaveInstanceState()方法也是不执行的
+*****************************************************************
+在添加内容时，横竖屏切换并不会把数据弄丢失。
+

@@ -1,4 +1,4 @@
-package com.e.helloworld.a_绘图.a_view的绘制.a_绘制动态心电图;
+package com.e.helloworld.a_组件篇.a_view的绘制.a_绘制动态心电图;
 
 import android.content.Context;
 import android.graphics.Canvas;

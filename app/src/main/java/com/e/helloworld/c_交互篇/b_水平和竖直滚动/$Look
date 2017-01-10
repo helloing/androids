@@ -1,0 +1,43 @@
+
+处理复杂的触摸事件
+  应用程序实现 单点触摸或多点触摸 来与用户交互时。
+
+用到的类：GestrueDetecor 和 ScaleGestureDetector
+
+讲解篇章：
+  使用GestureDetector和ScaleGestureDetector，或者干脆通过覆写onTouchEvent()和
+onInterceptTouchEvent()方法来手动处理传递给视图的所有触摸事件。
+  android的事件传递是自上而下的。触摸事件源于顶层窗口并首先发送给Activity。
+然后，这些事件被分发到已加载视图层的根视图，并从父视图依次传递到相应的子视图，
+直到事件被处理。
+  每个父视图的工作就是确认一个触摸事件应该发送给哪个子视图，以及按照正确的顺序
+将事件分发出去。这样可以确保高级别视图（顶层视图）可以优先获得触摸事件，如果没
+有子视图处理事件，就自己处理。
+  视图通过在其onTouchEvent()方法中返回true来表明自己已经处理额触摸事件，这样该
+事件就不会再向其他地方分发了。
+  所有的ViewGroup都可以通过onInterceptTouchEvent()回调方法来拦截传递给其子视图
+的触摸事件。
+
+
+GestrueDetecor:
+  检测各种手势和事件的服务类，通过onGestureListener回调来通知用户触摸事件的发生。
+仅能用在触摸事件上，他不支持轨迹事件的处理。
+  手势检测，用于辅助检测用户单击、滑动、长按、双击等行为。
+  必须要实现GestureListener接口的6个方法：
+   1）boolean onDown(MotionEvent e); //手指按下就会触发（调用onTouch()方法的ACTION_DOWN事件时触发）
+   2）boolean onSingleTapUp(MotionEvent e); //一次点击up事件；在touch down后又没有滑动（onScroll），
+又没有长按（onLongPress），然后Touchup时触发
+   3）void onShowPress(MotionEvent e); //down事件发生而move或则up还没发生前触发该事件；
+Touch了还没有滑动时触发（与onDown，onLongPress）比较onDown只要Touch down一定立刻触发。
+而Touchdown后过一会没有滑动先触发onShowPress再是onLongPress。所以Touchdown后一直不滑动
+onLongPress之前触发。
+   4）void onLongPress(MotionEvent e);  //长按，触摸屏按下后既不抬起也不移动，过一段时间后触发
+   5）boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY);
+//滚动，触摸屏按下后移动（执行onTouch()方法的ACTION_MOVE事件时会触发）
+   6）boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY);
+//急滑，快速滑动并抬起
+
+
+
+Scroller:
+  这个类封装了滚动，它可以获取滚动时的数据，和创建滚动动画

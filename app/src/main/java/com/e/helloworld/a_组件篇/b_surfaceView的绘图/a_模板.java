@@ -1,10 +1,9 @@
-package com.e.helloworld.a_绘图.b_surfaceView的绘图;
+package com.e.helloworld.a_组件篇.b_surfaceView的绘图;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;

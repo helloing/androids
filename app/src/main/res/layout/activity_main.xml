@@ -5,11 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <com.e.helloworld.a_绘图.b_surfaceView的绘图.d_心电图
+    <com.e.helloworld.c_交互篇.b_水平和竖直滚动.PanGestureScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-    />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2" />
+    </com.e.helloworld.c_交互篇.b_水平和竖直滚动.PanGestureScrollView>
+
 
 
 </RelativeLayout>
